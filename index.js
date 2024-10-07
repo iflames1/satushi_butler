@@ -19,7 +19,7 @@ bot.on("new_chat_members", (msg) => {
       reply_markup: {
         inline_keyboard: [
           [
-            { text: "Buy $Nukumutu", url: "https://example.com/buy" },
+            { text: "Buy $Nukumutu", url: "https://stx.city/bonding-curve/SPRCBFRWXDG7KWX9AFRK4W1SRDF9ESD35WCFXSGE.satushi-nukumutu-stxcity-dex/SPRCBFRWXDG7KWX9AFRK4W1SRDF9ESD35WCFXSGE.satushi-nukumutu-stxcity/SP2BN9JN4WEG02QYVX5Y21VMB2JWV3W0KNHPH9R4P" },
             { text: "Twitter(X)", url: "https://x.com/nukumutu_btc" },
           ],
         ],
