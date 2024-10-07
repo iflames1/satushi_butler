@@ -1,8 +1,8 @@
 const TelegramBot = require("node-telegram-bot-api");
+require("dotenv").config(); // Load environment variables from .env file
 
-// Replace with your actual token
-const token = "8156031408:AAGAy25l1azz8MZ2gYWRGQUOSgQw1QSFT_s";
-
+// Get the token from environment variables
+const token = process.env.TELEGRAM_BOT_TOKEN;
 // Create a bot that uses 'polling' to fetch new updates
 const bot = new TelegramBot(token, { polling: true });
 
@@ -12,8 +12,23 @@ bot.on("new_chat_members", (msg) => {
   const newMembers = msg.new_chat_members;
 
   newMembers.forEach((member) => {
-    const welcomeMessage = `Welcome, ${member.first_name}!`;
-    bot.sendMessage(chatId, welcomeMessage);
+    const welcomeMessage = `${member.first_name} just landed, Welcome to Satushi Nukumutu Community 🎉\n\nWe spread Bitcoin virus and DeFi on Stacks. Join the squad and let's grow together! 🚀`;
+
+    // Define the inline keyboard buttons
+    const options = {
+      reply_markup: {
+        inline_keyboard: [
+          [
+            { text: "Buy $Nukumutu", url: "https://example.com/buy" },
+            { text: "Twitter(X)", url: "https://x.com/nukumutu_btc" },
+          ],
+        ],
+      },
+    };
+
+    // Send a photo with the welcome message and buttons
+    const photoUrl = "https://i.imgur.com/22pYI44.jpeg"; // Replace with your actual photo URL
+    bot.sendPhoto(chatId, photoUrl, { caption: welcomeMessage, ...options });
   });
 });
 
